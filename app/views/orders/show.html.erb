@@ -1,4 +1,4 @@
-<section class="orders-show">
+<section class="orders-show container">
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
@@ -6,6 +6,34 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+
+    <div class="order-details">
+      <h5>Order Details:</h5>
+      <ul class="list-group">
+        <% @order.line_items.each do |line_item| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <%= image_tag line_item.product.image.thumb.url, alt: line_item.product.name, class: 'img-thumbnail' %>
+              </div>
+              <div class="col-md-6">
+                <h5><%= line_item.product.name %></h5>
+                <p><%= line_item.product.description %></p>
+              </div>
+              <div class="col-md-2 text-right">
+                <p>Qty: <%= line_item.quantity %></p>
+                <p>Line Total: <%= humanized_money_with_symbol line_item.total_price %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="order-summary-total mt-3">
+      <h5>Order Total: <%= humanized_money_with_symbol @order.total_cents %></h5>
+      <p>Email: <%= @order.email %></p>
+    </div>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
