@@ -102,3 +102,20 @@ main section.categories-show {
   font-family: "Montserrat";
   font-weight: 700;
 }
+
+.product-actions {
+  display: flex;
+  align-items: center;
+}
+
+.product-actions .btn {
+  margin-right: 10px; 
+}
+
+.badge-danger {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
