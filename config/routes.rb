@@ -1,21 +1,31 @@
 Rails.application.routes.draw do
+  # Route for the About page
+  get 'about', to: 'about#index', as: :about
 
+  # Root path
   root to: 'products#index'
 
+  # Product and Category resources
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
+  # Cart routes
   resource :cart, only: [:show] do
-    post   :add_item
-    post   :remove_item
+    post :add_item
+    post :remove_item
   end
 
+  # Order routes
   resources :orders, only: [:create, :show]
 
+  # Admin namespace routes
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
+    resources :categories, only: [:index, :show] # If needed
   end
+end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -71,4 +81,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
