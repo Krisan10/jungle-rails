@@ -1,5 +1,4 @@
-
-<header class="<%= current_page?(root_path) ? "hero" : "hero small" %>">
+<header class="<%= current_page?(root_path) ? 'hero' : 'hero small' %>">
   <section class="title">
     <h3>Welcome to</h3>
     <h1>The Jungle</h1>
@@ -9,6 +8,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-nav">
   <div class="container">
     <a class="navbar-brand" href="<%= root_path %>">Jungle</a>
+    <a class="nav-link text-white" href="<%= about_path %>">About Us</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -55,13 +55,14 @@
             Admin
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %></li>
-            <li><%= link_to 'Products', [:admin, :products], class: "nav-link" %></li>
+            <li><%= link_to 'Dashboard', admin_root_path, class: "nav-link" %></li>
+            <li><%= link_to 'Products', admin_products_path, class: "nav-link" %></li>
           </ul>
         </li>
         <li class="nav-item end-0">
-          <%= link_to cart_path, class: "nav-link " do %> <%= fa_icon "shopping-cart" %>
-          My Cart (<%= cart.size %>) <% end %>
+          <%= link_to cart_path, class: "nav-link" do %>
+            <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+          <% end %>
         </li>
       </ul>
     </div>
@@ -69,7 +70,7 @@
 </nav>
 <script>
 (function(){
-const gnr = () => {
+  const gnr = () => {
     const uptitle = document.querySelector("section.title h3");
     const subtitle = document.querySelector("section.title h2");
     const header = document.querySelector("header.hero");
@@ -83,6 +84,5 @@ const gnr = () => {
   };
   const title = document.querySelector("header.hero");
   title.addEventListener("dblclick", gnr);
-  
-})()
-  </script>
+})();
+</script>
