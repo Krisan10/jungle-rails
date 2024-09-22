@@ -63,15 +63,21 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # RSpec testing framework
   gem 'rspec-rails', '~> 5.1'
-  
+
   # Net SMTP gem for sending emails
   gem 'net-smtp', require: false
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  
+
   # For environment variable management
   gem 'dotenv-rails'
+
+  # Cypress for end-to-end testing
+  gem 'cypress-rails'
+
+  # Database Cleaner for cleaning test database
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
@@ -80,9 +86,9 @@ group :development do
 
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   gem 'rack-mini-profiler', '~> 2.0'
-  
+
   gem 'listen', '~> 3.3'
-  
+
   # Spring speeds up development by keeping your application running in the background.
   gem 'spring'
 end
@@ -90,9 +96,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  
+
   gem 'selenium-webdriver'
-  
+
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
